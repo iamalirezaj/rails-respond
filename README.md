@@ -9,7 +9,7 @@
 This package is provided to be used on rails framework and it gives clean methods to handle json response with specific predetermined messages.
 
 # Requirement
-* Ruby ^1.2
+* Ruby ^2.2.2
 * Rails ^4.2
 
 **The package is in process.**
