@@ -19,7 +19,7 @@ This package is provided to be used on rails framework and it gives clean method
 Add this line to your application's Gemfile:
 
 ```ruby
-gem 'Respond'
+gem 'respond'
 ```
 
 And then execute:
@@ -28,7 +28,7 @@ And then execute:
 
 Or install it yourself as:
 
-    $ gem install Respond
+    $ gem install respond
 
 
 ## Usage
@@ -109,7 +109,7 @@ respond.request_field_notfound
 ```
 
 Validation errors:
-``` php
+```ruby
 respond.validation_errors(data)
 ```
 
@@ -122,6 +122,16 @@ respond.not_found('Leave it empty or enter your custom message here')
 And you can do more:
 ```ruby
 respond.set_status_code(200).set_status_text('succeed').respond_with_message('Your custom message')
+```
+
+###render
+for render the json response , you must use the render method
+```ruby
+render :json => result
+```
+the "result" varibule must be instnace of Respond object for example:
+```ruby
+render :json => respond.not_found
 ```
 
 ## License
