@@ -11,9 +11,9 @@ module Anetwork
     # @author Alireza Josheghani <a.josheghani@anetwork.ir>
     # @since 1 Dec 2016
     # @return [Object]
-    def initialize
+    # @param [String] lang
+    def initialize(lang = 'en')
       @lang = I18n.locale
-      lang = 'en'
 
       if @lang != '' || @lang != nil
         lang = @lang
