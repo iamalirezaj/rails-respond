@@ -12,11 +12,12 @@ Gem::Specification.new do |spec|
   spec.summary       = 'Easy peasy json response for ruby on rails!'
   spec.description   = 'This package is provided to be used on rails framework and it gives clean methods to handle json response with specific predetermined messages.'
   spec.homepage      = 'https://github.com/anetwork'
+  spec.required_ruby_version     = '>= 2.2.2'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)
   spec.require_paths = ['lib']
 
-  spec.add_development_dependency 'bundler', '~> 1.11'
-  spec.add_development_dependency 'rake', '~> 10.0'
+  spec.add_development_dependency 'bundler', '~> 1.5'
+  spec.add_development_dependency 'rake'
 end
