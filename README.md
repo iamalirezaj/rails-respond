@@ -1,3 +1,9 @@
+[![Build Status](https://img.shields.io/travis/anetwork/rails-respond.svg?style=flat-square)](https://travis-ci.org/anetwork/rails-respond)
+[![Gem Version](https://img.shields.io/gem/v/respond.svg?style=flat-square)](https://rubygems.org/gems/respond)
+[![Total Downloads](http://ruby-gem-downloads-badge.herokuapp.com/respond?type=total&style=flat-square)](https://rubygems.org/gems/respond)
+[![License](https://img.shields.io/:license-mit-blue.svg?style=flat-square)](https://rubygems.org/gems/respond)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/anetwork/rails-respond/badges/quality-score.png?style=flat-square)](https://scrutinizer-ci.com/g/anetwork/rails-respond)
+
 # Rails Respond
 
 This package is provided to be used on rails framework and it gives clean methods to handle json response with specific predetermined messages.
