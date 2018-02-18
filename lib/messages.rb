@@ -1,4 +1,4 @@
-module Anetwork
+module Josh
 
   class Messages
 
@@ -8,24 +8,18 @@ module Anetwork
     ##
     # initialize method
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     # @param [String] lang
-    def initialize(lang = 'en')
-      @lang = I18n.locale
-
-      if @lang != '' || @lang != nil
-        lang = @lang
-      end
-
-      @config = eval(File.open(__dir__ + "/errors/#{lang}.rb").read)
+    def initialize(lang = :en)
+      I18n.default_locale = lang
     end
 
     ##
     # Request succeeded and contains json result
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [Object] data
     # @return [Object]
@@ -38,13 +32,13 @@ module Anetwork
     ##
     # Delete action is succeed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
     def delete_succeeded(message = nil)
       if message == nil
-        message = @config[:success][:delete]
+        message = I18n.t "respond.success.delete"
       end
 
       self.set_status_code(200)
@@ -55,13 +49,13 @@ module Anetwork
     ##
     # Update action is succeed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
     def update_succeeded(message = nil)
       if message == nil
-        message = @config[:success][:update]
+        message = I18n.t "respond.success.update"
       end
 
       self.set_status_code(200)
@@ -72,13 +66,13 @@ module Anetwork
     ##
     # Insert action is succeed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
     def insert_succeeded(message = nil)
       if message == nil
-        message = @config[:success][:insert]
+        message = I18n.t "respond.success.insert"
       end
 
       self.set_status_code(200)
@@ -87,19 +81,19 @@ module Anetwork
     end
 
     ##
-    # Delete action is faild
+    # Delete action is failed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
-    def delete_faild(message = nil)
+    def delete_failed(message = nil)
       if message == nil
-        message = @config[:fail][:delete]
+        message = I18n.t "respond.failed.delete"
       end
 
       self.set_status_code(447)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5447)
           .respond_with_message(message)
     end
@@ -107,35 +101,35 @@ module Anetwork
     ##
     # Update action is succeed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
-    def update_faild(message = nil)
+    def update_failed(message = nil)
       if message == nil
-        message = @config[:fail][:update]
+        message = I18n.t "respond.failed.update"
       end
 
       self.set_status_code(449)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5449)
           .respond_with_message(message)
     end
 
     ##
-    # Insert action is faild
+    # Insert action is failed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [String] message
     # @return [Object]
-    def insert_faild(message = nil)
+    def insert_failed(message = nil)
       if message == nil
-        message = @config[:fail][:insert]
+        message = I18n.t "respond.failed.insert"
       end
 
       self.set_status_code(448)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5448)
           .respond_with_message(message)
     end
@@ -143,12 +137,12 @@ module Anetwork
     ##
     # Database connection is refused
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def connection_refused
       self.set_status_code(445)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5445)
           .respond_with_message
     end
@@ -156,12 +150,12 @@ module Anetwork
     ##
     # Page requested is not found
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def not_found
       self.set_status_code(404)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5404)
           .respond_with_message
     end
@@ -169,12 +163,12 @@ module Anetwork
     ##
     # Wrong parameters are entered
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def wrong_parameters
       self.set_status_code(406)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5406)
           .respond_with_message
     end
@@ -182,12 +176,12 @@ module Anetwork
     ##
     # Method is not allowed
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def method_not_allowed
       self.set_status_code(405)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5405)
           .respond_with_message
     end
@@ -195,12 +189,12 @@ module Anetwork
     ##
     # There ara validation errors
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def validation_errors(message = nil)
       self.set_status_code(420)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(5420)
           .respond_with_message(message)
     end
@@ -208,12 +202,12 @@ module Anetwork
     ##
     # The request field is not found
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def request_field_notfound
       self.set_status_code(446)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(1001)
           .respond_with_message
     end
@@ -221,12 +215,12 @@ module Anetwork
     ##
     # The request field is duplicated
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @return [Object]
     def request_field_duplicated
       self.set_status_code(400)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(1004)
           .respond_with_message
     end
@@ -234,13 +228,13 @@ module Anetwork
     ##
     # The error message
     #
-    # @author Alireza Josheghani <a.josheghani@anetwork.ir>
+    # @author Alireza Josheghani <josheghani.dev@gmail.com>
     # @since 1 Dec 2016
     # @param [Object] code
     # @return [Object]
     def error(code)
       self.set_status_code(400)
-          .set_status_text('fail')
+          .set_status_text('failed')
           .set_error_code(code)
           .respond_with_message
     end

@@ -5,14 +5,14 @@ require 'Respond/version'
 
 Gem::Specification.new do |spec|
   spec.name          = 'respond'
-  spec.version       = Anetwork::Respond::VERSION
+  spec.version       = Josh::Respond::VERSION
   spec.authors       = ['Alireza Josheghani']
-  spec.email         = ['a.josheghani@anetwork.ir']
+  spec.email         = ['josheghani.dev@gmail.com']
 
   spec.summary       = 'Easy peasy json response for ruby on rails!'
   spec.description   = 'This package is provided to be used on rails framework and it gives clean methods to handle json response with specific predetermined messages.'
-  spec.homepage      = 'https://github.com/anetwork'
-  spec.required_ruby_version     = '>= 1.9'
+  spec.homepage      = 'https://github.com/iamalirezaj'
+  spec.required_ruby_version     = '>= 2.4'
   spec.license       = 'MIT'
 
   spec.files         = `git ls-files`.split($/)

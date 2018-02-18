@@ -1,6 +1,4 @@
-require 'Messages'
-
-module Anetwork
+module Josh
 
   class Respond < Messages
 
@@ -24,7 +22,7 @@ module Anetwork
     # @param [String] text
     # @return [Object]
     def set_status_text(text)
-      @text = text
+      @text = I18n.t text
       self
     end
 
@@ -46,7 +44,7 @@ module Anetwork
         result['error'] = @error_code
       end
 
-      result
+      { :json => result, status: @code, headers: @headers }
     end
 
     ##
@@ -54,10 +52,11 @@ module Anetwork
     #
     # @author Alireza Josheghani <a.josheghani@anetwork.ir>
     # @since 1 Dec 2016
-    # @param [Object] data
+    # @param [array] data
     # @return [Object]
     def respond_with_result(data)
-      { :status => @text, :result => data }
+
+      { :json => { :status => @text, :result => data }, status: @code, headers: @headers }
     end
 
     ##
@@ -69,7 +68,7 @@ module Anetwork
     # @return [Object]
     def set_error_code(error_code)
       @error_code = error_code
-      @error = @config[error_code]
+      @error = I18n.t "respond.#{error_code}"
       self
     end
 

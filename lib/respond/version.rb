@@ -1,5 +1,5 @@
-module Anetwork
+module Josh
   class Respond
-    VERSION = "0.1.2"
+    VERSION = "0.1.3"
   end
 end
